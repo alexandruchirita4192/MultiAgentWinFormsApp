@@ -41,6 +41,17 @@ public static class EnvironmentContext
             : _gitHubToken;
     }
 
+    public static class BaseAgent
+    {
+        public static string Prompt => OrchestratorMode.IsLoop
+            ? ConfigurationManager.AppSettings["LoopPrompt"]
+            : (OrchestratorMode.IsSinglePass
+                ? ConfigurationManager.AppSettings["SinglePassPrompt"]
+                : throw new InvalidOperationException("Invalid orchestration mode."));
+
+        public static string MainFormat = ConfigurationManager.AppSettings["MainFormat"];
+    }
+
     static EnvironmentContext()
     {
         _mode = ConfigurationManager.AppSettings[nameof(Constants.OrchestrationMode)];
