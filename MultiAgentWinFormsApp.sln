@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiAgentWinFormsApp", "MultiAgentWinFormsApp.csproj", "{8F1F3768-F24C-3C5B-8441-40193F336F51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiAgentWinFormsApp.Test", "MultiAgentWinFormsApp.Test\MultiAgentWinFormsApp.Test.csproj", "{5E2A3D48-F786-4999-BBCA-3C646EF6D404}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F1F3768-F24C-3C5B-8441-40193F336F51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F1F3768-F24C-3C5B-8441-40193F336F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F1F3768-F24C-3C5B-8441-40193F336F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F1F3768-F24C-3C5B-8441-40193F336F51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E2A3D48-F786-4999-BBCA-3C646EF6D404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E2A3D48-F786-4999-BBCA-3C646EF6D404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E2A3D48-F786-4999-BBCA-3C646EF6D404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E2A3D48-F786-4999-BBCA-3C646EF6D404}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F64FC9A6-69A0-4F18-9AB1-FF727FC7B5C6}
+	EndGlobalSection
+EndGlobal
