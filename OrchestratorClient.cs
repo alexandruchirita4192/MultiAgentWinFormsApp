@@ -33,11 +33,16 @@ public class OrchestratorClient
     private async Task<List<string>> RunSinglePassAsync(string fileName, string content)
     {
         var results = new List<string>();
+
+        if (_agents.Count == 0)
+            results.Add(content);
+
         foreach (var agent in _agents)
         {
             var analysis = await agent.AnalyzeAsync(fileName, content);
             results.Add($"[{agent.Name}] Analysis:\n{analysis}");
         }
+
         return results;
     }
 

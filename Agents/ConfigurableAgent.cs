@@ -28,15 +28,15 @@ public class ConfigurableAgent : BaseAgent
     {
         var agents = new List<ConfigurableAgent>();
         var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-        var agentSection = config.GetSection("agentConfigurations") as AppSettingsSection;
+        var agentSection = config.GetSection("agentConfigurations") as DefaultSection;
 
         if (agentSection != null)
         {
-            var agentElements = XElement.Parse(agentSection.SectionInformation.GetRawXml()).Elements("agent");
+            var agentElements = XElement.Parse(agentSection.SectionInformation.GetRawXml()).Elements("add");
             foreach (var element in agentElements)
             {
-                var name = element.Attribute("name")?.Value;
-                var prompt = element.Attribute("prompt")?.Value;
+                var name = element.Attribute("key")?.Value;
+                var prompt = element.Attribute("value")?.Value;
 
                 if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(prompt))
                 {

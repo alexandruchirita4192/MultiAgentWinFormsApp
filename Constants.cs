@@ -3,10 +3,22 @@ namespace MultiAgentWinFormsApp;
 
 public static class Constants
 {
+    public static class AppSettings
+    {
+        public const string AgentConfigurations = "agentConfigurations";
+    }
+
     public static class OrchestrationMode
     {
         public const string Loop = "Loop";
         public const string SinglePass = "SinglePass";
+    }
+
+    public static class BaseAgent
+    {
+        public const string LoopPrompt = "LoopPrompt";
+        public const string SinglePassPrompt = "SinglePassPrompt";
+        public const string MainFormat = "MainFormat";
     }
 
     public static class LLMBackend

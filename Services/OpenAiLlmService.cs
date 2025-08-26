@@ -4,6 +4,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using Newtonsoft.Json;
 using MultiAgentWinFormsApp.Interfaces;
+using MultiAgentWinFormsApp.Extensions;
 
 namespace MultiAgentWinFormsApp.Services;
 
@@ -29,7 +30,7 @@ public class OpenAiLlmService : ILLMService
         string? body = null;
         try
         {
-            if (string.IsNullOrWhiteSpace(prompt))
+            if (prompt.IsEmpty())
                 throw new ArgumentException("Prompt cannot be null or empty.");
 
             var payload = new
@@ -58,7 +59,7 @@ public class OpenAiLlmService : ILLMService
 
             body = await resp.Content.ReadAsStringAsync();
 
-            var result = !string.IsNullOrWhiteSpace(body)
+            var result = body.IsNotEmpty()
                 ? JsonConvert.DeserializeObject<ResponseModel>(body)
                 : null; // Just do nothing!
 
@@ -74,12 +75,13 @@ public class OpenAiLlmService : ILLMService
         }
         catch (JsonException ex)
         {
-            throw new NotSupportedException($"Failed to parse the response from OpenAI API. OpenAI Response: '{body}'", ex);
+            MessageBox.Show($"Failed to parse the response from OpenAI API. OpenAI Response: '{body}'. Exception: '{ex}'.");
         }
         catch (Exception ex)
         {
-            throw new NotSupportedException($"Exception occured while processing using OpenAI API. OpenAI Response: '{body}'", ex);
+            MessageBox.Show($"Exception occured while processing using OpenAI API. OpenAI Response: '{body}'. Exception: '{ex}'.");
         }
+        return prompt;
     }
 
     public class ResponseModel
