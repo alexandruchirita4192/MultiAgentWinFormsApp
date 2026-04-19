@@ -1,5 +1,6 @@
 ﻿// This code was generated in whole or in part by GenAI tool
 
+using System.Collections.Generic;
 using System.Configuration;
 using System.Xml.Linq;
 
@@ -42,6 +43,27 @@ public static class SectionExtensions
         section.SaveAndReload(sectionElements);
     }
 
+
+    public static void ReplaceAllAndSave(this Section section, IEnumerable<KeyValuePair<string, string>> entries)
+    {
+        if (section == null)
+            return;
+
+        var sectionElements = section.GetSectionElements();
+        sectionElements.Elements("add").Remove();
+
+        foreach (var entry in entries)
+        {
+            if (entry.Key.IsEmpty() || entry.Value.IsEmpty())
+                continue;
+
+            sectionElements.Add(new XElement("add",
+                new XAttribute("key", entry.Key),
+                new XAttribute("value", entry.Value)));
+        }
+
+        section.SaveAndReload(sectionElements);
+    }
     public static void RemoveAndSave(this Section section, string? oldKey)
     {
         if (section == null)

@@ -1,6 +1,5 @@
 ﻿// This code was generated in whole or in part by GenAI tool
 
-using MultiAgentWinFormsApp.Agents;
 using MultiAgentWinFormsApp.Interfaces;
 
 namespace MultiAgentWinFormsApp;
@@ -12,13 +11,17 @@ public class OrchestratorClient
 {
     private readonly List<IAgent> _agents = new();
 
-    public OrchestratorClient(ILLMService llmService)
+    public OrchestratorClient()
     {
-        // Load agents from configuration
-        _agents.AddRange(ConfigurableAgent.LoadAgentsFromConfig(llmService));
     }
 
     public void RegisterAgent(IAgent agent) => _agents.Add(agent);
+
+    public void SetAgents(IEnumerable<IAgent> agents)
+    {
+        _agents.Clear();
+        _agents.AddRange(agents);
+    }
 
     public async Task<List<string>> RunAsync(string fileName, string content)
     {
