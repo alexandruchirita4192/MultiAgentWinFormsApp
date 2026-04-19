@@ -6,6 +6,7 @@ public static class Constants
     public static class AppSettings
     {
         public const string AgentConfigurations = "agentConfigurations";
+        public const string AgentPresetConfigurations = "agentPresetConfigurations";
     }
 
     public static class OrchestrationMode
